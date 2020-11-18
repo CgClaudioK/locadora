@@ -22,15 +22,15 @@ public static Connection getConnection() {
 }
 
 public static void closeConnection(Connection con) {
-	if (con != null) {	
+	if (con != null)  
 		try {	
 			con.close();
 		} catch (SQLException e) {
 			throw new RuntimeException("Erro ao encerrar a conexão: ", e);
 		}
 	}
-}
-	
+
+
 
 public static void closeConnection(Connection con, PreparedStatement stmt) {
 	closeConnection(con);

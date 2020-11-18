@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 import model.bean.Filme;
 import model.dao.FilmeDAO;
-import model.dao.filmeDAO;
+import model.dao.FilmeDAO;
 
 import javax.swing.JLabel;
 import java.awt.Font;
