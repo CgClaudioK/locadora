@@ -1,5 +1,6 @@
-
+package view;
 import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -121,7 +122,7 @@ public class JFCadastrarCliente extends JFrame {
 			}
 			
 		});
-		btnCadastrar.setBounds(10, 273, 109, 23);
+		 btnCadastrar.setBounds(10, 273, 109, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnLimpar = new JButton("LIMPAR");

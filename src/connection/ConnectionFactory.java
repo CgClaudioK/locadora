@@ -17,7 +17,8 @@ public static Connection getConnection() {
 		Class.forName(DRIVER);
 		return DriverManager.getConnection(URL, USER, PASS);
 	} catch (ClassNotFoundException | SQLException e) {
-		throw new RuntimeException("Erro na conexão: ", (Throwable) e);
+		throw new RuntimeException("Erro na conexão: ", e);
+
 	}
 }
 
