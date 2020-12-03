@@ -2,20 +2,28 @@ package model.bean;
 
 public class Cliente {
 	
+		private int idCliente;
 		private String nome;
-		private int cpf;	
+		private long cpf;	
 		private boolean sexo;
 		private String endereco;
+		
 		public String getNome() {
 			return nome;
+		}
+		public int getIdCliente() {
+			return idCliente;
+		}
+		public void setIdCliente(int idCliente) {
+			this.idCliente = idCliente;
 		}
 		public void setNome(String nome) {
 			this.nome = nome;
 		}
-		public int getCpf() {
+		public long getCpf() {
 			return cpf;
 		}
-		public void setCpf(int cpf) {
+		public void setCpf(long cpf) {
 			this.cpf = cpf;
 		}
 		public boolean isSexo() {
@@ -39,6 +47,7 @@ public class Cliente {
 			this.sexo = true;
 			
 		}
+		
 	
 			
 		}

@@ -88,18 +88,26 @@ public class JFCadastrarCliente extends JFrame {
 		contentPane.add(lblNewLabel_4);
 		
 		JRadioButton rdbtnF = new JRadioButton("FEMININO");
-		rdbtnF.setBounds(127, 216, 92, 23);
+		rdbtnF.setBounds(127, 216, 120, 23);
 		contentPane.add(rdbtnF);
 		
 		JRadioButton rdbtnM = new JRadioButton("MASCULINO");
-		rdbtnM.setBounds(0, 216, 92, 23);
+		rdbtnM.setBounds(0, 216, 119, 23);
 		contentPane.add(rdbtnM);
 		
 		ButtonGroup imagem = new ButtonGroup();
 		imagem.add(rdbtnF);
 		imagem.add(rdbtnM);
 		
+		JLabel lblNewLabel_3 = new JLabel("CPF");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_3.setBounds(10, 91, 46, 14);
+		contentPane.add(lblNewLabel_3);
 		
+		txtCpf = new JTextField();
+		txtCpf.setBounds(11, 116, 109, 20);
+		contentPane.add(txtCpf);
+		txtCpf.setColumns(15);
 		
 	
 		
@@ -112,6 +120,7 @@ public class JFCadastrarCliente extends JFrame {
 				ClienteDAO dao = new ClienteDAO();
 				c.setNome(txtNome.getText());
 				c.setEndereco(txtEndereco.getText());
+				c.setCpf(Integer.parseInt(txtCpf.getText()));
 				if(rdbtnM.isSelected()) {
 					c.setMasculino(false);
 				}else if (rdbtnF.isSelected()) {
@@ -133,14 +142,6 @@ public class JFCadastrarCliente extends JFrame {
 		btnCancelar.setBounds(337, 273, 116, 23);
 		contentPane.add(btnCancelar);
 		
-		JLabel lblNewLabel_3 = new JLabel("CPF");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel_3.setBounds(10, 91, 46, 14);
-		contentPane.add(lblNewLabel_3);
 		
-		txtCpf = new JTextField();
-		txtCpf.setBounds(10, 116, 86, 20);
-		contentPane.add(txtCpf);
-		txtCpf.setColumns(10);
 	}
 }

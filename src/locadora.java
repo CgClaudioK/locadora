@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Dez-2020 às 18:18
+-- Tempo de geração: 03-Dez-2020 às 19:21
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.8
 
@@ -29,9 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cliente` (
-  `nome` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `idCliente` int(11) NOT NULL,
+  `nome` varchar(40) CHARACTER SET utf8mb4 DEFAULT NULL,
   `endereco` varchar(30) CHARACTER SET utf8mb4 NOT NULL,
-  `cpf` int(11) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `cpf` bigint(20) NOT NULL,
   `sexo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -39,12 +40,12 @@ CREATE TABLE `cliente` (
 -- Extraindo dados da tabela `cliente`
 --
 
-INSERT INTO `cliente` (`nome`, `endereco`, `cpf`, `sexo`) VALUES
-('josefiono correia', '', '0', 0),
-('josefino correi', '', '0', 0),
-('almeida campos', '', '0', 0),
-('cristian', '', '0', 0),
-('dadad', '', '0', 0);
+INSERT INTO `cliente` (`idCliente`, `nome`, `endereco`, `cpf`, `sexo`) VALUES
+(26, 'kokoko', 'rua daltro', 980980898, 0),
+(27, 'josefino', 'sjdisjd', 340210203, 0),
+(28, 'Claudio', 'idjsid', 340210203, 0),
+(29, 'claudio', 'ikdidds', 340210203, 1),
+(30, 'ca', 'opa', 340210203, 0);
 
 -- --------------------------------------------------------
 
@@ -75,6 +76,12 @@ INSERT INTO `filme` (`idFilme`, `titulo`, `tempo`, `img3d`, `dublado`, `categori
 --
 
 --
+-- Índices para tabela `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`idCliente`);
+
+--
 -- Índices para tabela `filme`
 --
 ALTER TABLE `filme`
@@ -83,6 +90,12 @@ ALTER TABLE `filme`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `filme`
@@ -94,4 +107,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

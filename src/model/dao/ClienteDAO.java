@@ -22,9 +22,9 @@ public class ClienteDAO {
 	try { 
 		stmt = con.prepareStatement("INSERT INTO CLIENTE(nome, endereco, cpf, sexo) VALUES" + "(?,?,?,?)");
 		
-		stmt.setString(1, c.getNome());	
+		stmt.setString(1, c.getNome());		
 		stmt.setString(2, c.getEndereco());
-		stmt.setInt(3, c.getCpf());
+		stmt.setLong(3, c.getCpf());
 		stmt.setBoolean(4, c.isSexo());
 		
 		
@@ -49,9 +49,10 @@ public class ClienteDAO {
 			rs = stmt.executeQuery();	
 			while (rs.next()) {
 				Cliente c = new Cliente();
+				c.setIdCliente(rs.getInt("idCliente"));
 				c.setNome(rs.getString("nome"));
 				c.setEndereco(rs.getString("endereco"));
-				c.setCpf(rs.getInt("cpf"));
+				c.setCpf(rs.getLong("cpf"));
 				c.setSexo(rs.getBoolean("sexo"));
 		
 					clientes.add(c);
