@@ -66,5 +66,49 @@ public class ClienteDAO {
 		}
 		return clientes;
 	}
+	public Cliente read(int idCliente) {
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Cliente c = new Cliente();
+
+		try {
+			stmt = con.prepareStatement("SELECT * FROM Cliente WHERE idCliente=? LIMIT 1;");
+			stmt.setInt(1, idCliente);
+			rs = stmt.executeQuery();
+			if(rs != null && rs.next()) {
+				c.setIdCliente(rs.getInt("idCliente"));
+				c.setEndereco(rs.getString("endereco"));
+				c.setCpf(rs.getInt("cpf"));
+				c.setSexo(rs.getBoolean("sexo"));
+				
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionFactory.closeConnection(con, stmt, rs);
+		}
+		return c;
+	}
+
+	public void update(Cliente c) {
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+
+		try {
+			stmt = con.prepareStatement("UPDATE cliente SET nome=?, endereco=?, "
+					+ "cpf=?, sexo=?;");
+			stmt.setString(1, c.getNome());		
+			stmt.setString(2, c.getEndereco());
+			stmt.setLong(3, c.getCpf());
+			stmt.setBoolean(4, c.isSexo());
+			stmt.executeUpdate();
+			JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Erro ao atualizar: "+ e);
+		}finally {
+			ConnectionFactory.closeConnection(con, stmt);
+		}
+}
 }
 
