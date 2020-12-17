@@ -51,6 +51,7 @@ public class JFAtualizarCliente extends JFrame {
 	 * @return 
 	 */
 	public JFAtualizarCliente(int id) {
+		
 		setTitle("Alterar Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 595, 473);
@@ -118,13 +119,24 @@ public class JFAtualizarCliente extends JFrame {
 		lblNewLabel_3.setBounds(10, 91, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JTextField txtCpf = new JTextField();
-		txtCpf.setBounds(11, 116, 109, 20);
-		contentPane.add(txtCpf);
-		txtCpf.setColumns(15);
+		JTextField txtCPF = new JTextField();
+		txtCPF.setBounds(11, 116, 109, 20);
+		contentPane.add(txtCPF);
+		txtCPF.setColumns(15);
 		
-
-
+		lblId.setText(String.valueOf(c.getIdCliente()));
+		txtNome.setText(c.getNome());
+		txtEndereco.setText(c.getEndereco());
+		txtCPF.setText(Long.toString(c.getCpf()));	
+		if(c.isSexo() == true) {
+			if(rdbtnM.isSelected()) {
+				c.setMasculino(false);
+			}else if (rdbtnF.isSelected()) {
+				c.setFeminino(true);
+			}
+		
+		}
+	
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -132,16 +144,16 @@ public class JFAtualizarCliente extends JFrame {
 				ClienteDAO dao = new ClienteDAO();
 				c.setNome(txtNome.getText());
 				c.setEndereco(txtEndereco.getText());
-				c.setCpf(Integer.parseInt(txtCpf.getText()));
+				c.setCpf(Integer.parseInt(txtCPF.getText()));
 				if(rdbtnM.isSelected()) {
 					c.setMasculino(false);
 				}else if (rdbtnF.isSelected()) {
 					c.setFeminino(true);
 				}
-				
-				dao.create(c);
+		
+				dao.update(c);
 			}
-			
+		
 		});
 		btnAlterar.setBounds(10, 400, 89, 23);
 		contentPane.add(btnAlterar);
@@ -157,5 +169,7 @@ public class JFAtualizarCliente extends JFrame {
 
 
 
-	}
+	
 }
+}
+

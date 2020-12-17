@@ -57,6 +57,7 @@ public class ClienteDAO {
 		
 					clientes.add(c);
 			}
+		
 		} catch (SQLException e	) {
 			JOptionPane.showMessageDialog(null, "Erro ao acessar o BD" + e);
 			e.printStackTrace();

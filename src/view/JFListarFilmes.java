@@ -67,15 +67,9 @@ public class JFListarFilmes extends JFrame {
 		contentPane.add(scrollPane);
 
 		jtFilme = new JTable();
-		jtFilme.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
-			},
-			new String[] {
-				"idFilme", "titulo", "Categoria", "Tempo"
-			}
-		));
+		jtFilme.setModel(
+				new DefaultTableModel(new Object[][] { { null, null, null, null }, { null, null, null, null }, },
+						new String[] { "idFilme", "titulo", "Categoria", "Tempo" }));
 		scrollPane.setViewportView(jtFilme);
 
 		JButton btnCadastrar = new JButton("Cadastrar Filme");
@@ -85,21 +79,19 @@ public class JFListarFilmes extends JFrame {
 		JButton btnAlterar = new JButton("Alterar Filme");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-					//verificar se há linha selecionada
-					if(jtFilme.getSelectedRow()!= -1) {
-						JFAtualizarFilme af = new JFAtualizarFilme(
-								(int)jtFilme.getValueAt(jtFilme.getSelectedRow(), 0));
-						af.setVisible(true);
-					}else {
-						JOptionPane.showMessageDialog(null, "Selecione um filme!");
-					}
-					readJTable();
+
+				// verificar se há linha selecionada
+				if (jtFilme.getSelectedRow() != -1) {
+					JFAtualizarFilme af = new JFAtualizarFilme((int) jtFilme.getValueAt(jtFilme.getSelectedRow(), 0));
+					af.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Selecione um filme!");
+				}
+				readJTable();
 			}
 		});
 		btnAlterar.setBounds(176, 434, 111, 23);
 		contentPane.add(btnAlterar);
-		
 
 		JButton btnExcluir = new JButton("Excluir Filme");
 		btnExcluir.setBounds(321, 434, 117, 23);
@@ -112,16 +104,10 @@ public class JFListarFilmes extends JFrame {
 		DefaultTableModel modelo = (DefaultTableModel) jtFilme.getModel();
 		modelo.setNumRows(0);
 		FilmeDAO fdao = new FilmeDAO();
-		for(Filme f : fdao.read()) {
-			modelo.addRow(new Object[] {
-					f.getIdFilme(),
-					f.getTitulo(),
-					f.getCategoria(),
-					f.getTempo()
-			});
+		for (Filme f : fdao.read()) {
+			modelo.addRow(new Object[] { f.getIdFilme(), f.getTitulo(), f.getCategoria(), f.getTempo() });
 		}
 
 	}
-
 
 }

@@ -69,11 +69,11 @@ public class JFListarClientes extends JFrame {
 		jtCliente = new JTable();
 		jtCliente.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
+				{null, null , null, null, null},
+				{null, null, null, null, null},
 			},
 			new String[] {
-				"nome", "endereco", "cpf", "sexo"
+				"idCliente", "nome", "endereco", "cpf", "sexo"
 			}
 		));
 		scrollPane.setViewportView(jtCliente);
@@ -88,8 +88,7 @@ public class JFListarClientes extends JFrame {
 			
 						//verificar se há linha selecionada
 						if(jtCliente.getSelectedRow()!= -1) {
-							JFAtualizarCliente af = new JFAtualizarCliente(
-										(int)jtCliente.getValueAt(jtCliente.getSelectedRow(), 0));
+							JFAtualizarCliente af = new JFAtualizarCliente ((int)jtCliente.getValueAt(jtCliente.getSelectedRow(), 0));
 							af.setVisible(true);
 						}else {
 							JOptionPane.showMessageDialog(null, "Selecione um cliente!");
@@ -117,11 +116,11 @@ public class JFListarClientes extends JFrame {
 		ClienteDAO cdao = new ClienteDAO();
 		for(Cliente c : cdao.read()) {
 			modelo.addRow(new Object[] {
+					c.getIdCliente(),
 					c.getNome(),
 					c.getEndereco(),
 					c.getCpf(),
-					c.isSexo()
-			});
+					c.isSexo() });
 		}
 
 	}

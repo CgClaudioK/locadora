@@ -28,7 +28,7 @@ public class JFCadastrarCliente extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNome;
 	private JTextField txtEndereco;
-	private JTextField txtCpf;
+	private JTextField txtCPF;
 
 	/**
 	 * Launch the application.
@@ -104,10 +104,10 @@ public class JFCadastrarCliente extends JFrame {
 		lblNewLabel_3.setBounds(10, 91, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		txtCpf = new JTextField();
-		txtCpf.setBounds(11, 116, 109, 20);
-		contentPane.add(txtCpf);
-		txtCpf.setColumns(15);
+		txtCPF = new JTextField();
+		txtCPF.setBounds(11, 116, 109, 20);
+		contentPane.add(txtCPF);
+		txtCPF.setColumns(15);
 		
 	
 		
@@ -120,7 +120,7 @@ public class JFCadastrarCliente extends JFrame {
 				ClienteDAO dao = new ClienteDAO();
 				c.setNome(txtNome.getText());
 				c.setEndereco(txtEndereco.getText());
-				c.setCpf(Integer.parseInt(txtCpf.getText()));
+				c.setCpf(Integer.parseInt(txtCPF.getText()));
 				if(rdbtnM.isSelected()) {
 					c.setMasculino(false);
 				}else if (rdbtnF.isSelected()) {
