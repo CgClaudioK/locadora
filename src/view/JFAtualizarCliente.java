@@ -28,6 +28,7 @@ public class JFAtualizarCliente extends JFrame {
 	private JPanel contentPane;
 	
 	
+	
 	private static int id;
 
 	/**
@@ -128,20 +129,20 @@ public class JFAtualizarCliente extends JFrame {
 		txtNome.setText(c.getNome());
 		txtEndereco.setText(c.getEndereco());
 		txtCPF.setText(Long.toString(c.getCpf()));	
-		if(c.isSexo() == true) {
-			if(rdbtnM.isSelected()) {
-				c.setMasculino(false);
-			}else if (rdbtnF.isSelected()) {
-				c.setFeminino(true);
-			}
-		
+		if(rdbtnM.isSelected()) {
+			c.setSexo(false);
+		}else if (rdbtnF.isSelected()) {
+			c.setSexo(true);
 		}
+		
+	
 	
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				Cliente c = new Cliente();
 				ClienteDAO dao = new ClienteDAO();
+				c.setIdCliente(Integer.parseInt(lblId.getText()));
 				c.setNome(txtNome.getText());
 				c.setEndereco(txtEndereco.getText());
 				c.setCpf(Integer.parseInt(txtCPF.getText()));
@@ -169,7 +170,8 @@ public class JFAtualizarCliente extends JFrame {
 
 
 
-	
+		
 }
+
 }
 

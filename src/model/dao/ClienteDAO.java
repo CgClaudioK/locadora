@@ -66,6 +66,7 @@ public class ClienteDAO {
 	
 		}
 		return clientes;
+
 	}
 	public Cliente read(int idCliente) {
 		Connection con = ConnectionFactory.getConnection();
@@ -97,12 +98,13 @@ public class ClienteDAO {
 		PreparedStatement stmt = null;
 
 		try {
-			stmt = con.prepareStatement("UPDATE cliente SET nome=?, endereco=?, "
-					+ "cpf=?, sexo=?;");
+			stmt = con.prepareStatement("UPDATE cliente SET nome=?, endereco=?, cpf=?, sexo=?"
+					+ " WHERE idCliente=?;");
 			stmt.setString(1, c.getNome());		
 			stmt.setString(2, c.getEndereco());
 			stmt.setLong(3, c.getCpf());
 			stmt.setBoolean(4, c.isSexo());
+			stmt.setInt(5, c.getIdCliente());
 			stmt.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
 		} catch (SQLException e) {
