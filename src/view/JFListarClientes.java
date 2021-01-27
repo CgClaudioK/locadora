@@ -14,13 +14,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import model.bean.Cliente;
-import model.bean.Filme;
 import model.dao.ClienteDAO;
-import model.dao.FilmeDAO;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class JFListarClientes extends JFrame {
 
@@ -52,9 +51,15 @@ public class JFListarClientes extends JFrame {
 	 */
 	public JFListarClientes() {
 		setTitle("Listar Cliente");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 803, 525);
 		contentPane = new JPanel();
+		contentPane.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				readJTable();
+			}
+		});
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -81,6 +86,12 @@ public class JFListarClientes extends JFrame {
 		scrollPane.setViewportView(jtCliente);
 
 		JButton btnCadastrar = new JButton("Cadastrar Cliente");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFCadastrarCliente cc = new JFCadastrarCliente();
+				cc.setVisible(true);
+			}
+		});
 		btnCadastrar.setBounds(20, 434, 125, 23);
 		contentPane.add(btnCadastrar);
 
@@ -96,6 +107,7 @@ public class JFListarClientes extends JFrame {
 							JOptionPane.showMessageDialog(null, "Selecione um cliente!");
 						}
 						readJTable();
+						dispose();
 					}
 				});
 			
@@ -123,6 +135,7 @@ public class JFListarClientes extends JFrame {
 										JOptionPane.showMessageDialog(null, "Selecione um Cliente!");
 									}
 									readJTable();
+									dispose();
 			}
 		});
 		btnExcluir.setBounds(321, 434, 117, 23);
